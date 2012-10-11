@@ -7,12 +7,20 @@
 @property(strong) UIImageView *imageView;
 @end
 
+// Forwarded like this because we only want to use it if it's compiled into the host app
+@interface TCDVDirectoryWatcher : NSObject
+@property(nonatomic,weak) id delegate;
++ (TCDVDirectoryWatcher *)watchFolderWithPath:(NSString *)watchPath delegate:(id)watchDelegate;
+- (void)invalidate;
+@end
 
 
 static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
 
 @implementation TCDirectoryViewController {
     NSArray *_contents;
+    TCDVDirectoryWatcher *_watcher;
+    NSURL *_path;
 }
 + (NSArray*)viewControllersForPathComponentsInURL:(NSURL*)url
 {
@@ -37,16 +45,25 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     if(!(self = [super init]))
         return nil;
     
-    NSFileManager *nfm = [NSFileManager defaultManager];
+    _path = path;
     
+    NSFileManager *nfm = [NSFileManager defaultManager];
     _contents = [nfm contentsOfDirectoryAtURL:path includingPropertiesForKeys:nil options:0 error:err];
     if(!_contents)
         return nil;
+    
+    if([TCDVDirectoryWatcher class])
+        _watcher = [TCDVDirectoryWatcher watchFolderWithPath:path.path delegate:self];
     
     self.title = [path lastPathComponent];
     
     return self;
 }
+- (void)dealloc
+{
+    [_watcher invalidate];
+}
+
 - (void)loadView
 {
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && [UICollectionView class]) {
@@ -83,6 +100,14 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
         [(UITableView*)self.view deselectRowAtIndexPath:[(UITableView*)self.view indexPathForSelectedRow] animated:animated];
     else
         [(UICollectionView*)self.view deselectItemAtIndexPath:[(UICollectionView*)self.view indexPathsForSelectedItems].lastObject animated:YES];
+}
+
+- (void)directoryDidChange:(TCDVDirectoryWatcher *)folderWatcher
+{
+    NSFileManager *nfm = [NSFileManager defaultManager];
+    _contents = [nfm contentsOfDirectoryAtURL:_path includingPropertiesForKeys:nil options:0 error:NULL];
+
+    [(UITableView*)self.view reloadData];
 }
 
 #pragma mark - Table view data source

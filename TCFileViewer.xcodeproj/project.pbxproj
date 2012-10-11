@@ -19,6 +19,7 @@
 		05D9A3B8162736CB00F74F06 /* GenericDocumentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */; };
 		05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */; };
 		05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */; };
+		05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3C116273A5D00F74F06 /* TCDVDirectoryWatcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericDocumentIcon.png; sourceTree = "<group>"; };
 		05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericFolderIcon.png; sourceTree = "<group>"; };
 		05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericImageIcon.png; sourceTree = "<group>"; };
+		05D9A3C016273A5D00F74F06 /* TCDVDirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDVDirectoryWatcher.h; sourceTree = "<group>"; };
+		05D9A3C116273A5D00F74F06 /* TCDVDirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDVDirectoryWatcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,7 @@
 			children = (
 				05D9A3A61627353300F74F06 /* TCDocumentViewerController.h */,
 				05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */,
+				05D9A3BF16273A5D00F74F06 /* Extras */,
 				05D9A3A81627353300F74F06 /* Viewers */,
 			);
 			path = TCFileViewer;
@@ -128,6 +132,15 @@
 				05D9A3AC1627353300F74F06 /* TCImageViewerController.m */,
 			);
 			path = Viewers;
+			sourceTree = "<group>";
+		};
+		05D9A3BF16273A5D00F74F06 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				05D9A3C016273A5D00F74F06 /* TCDVDirectoryWatcher.h */,
+				05D9A3C116273A5D00F74F06 /* TCDVDirectoryWatcher.m */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +214,7 @@
 				05D9A3AD1627353300F74F06 /* TCDocumentViewerController.m in Sources */,
 				05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */,
 				05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */,
+				05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
