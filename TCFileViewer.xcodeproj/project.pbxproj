@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05AF0D0E15B5C01200A2932A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05AF0D0D15B5C01200A2932A /* UIKit.framework */; };
+		05AF0D1015B5C01200A2932A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05AF0D0F15B5C01200A2932A /* Foundation.framework */; };
+		05AF0D1215B5C01200A2932A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05AF0D1115B5C01200A2932A /* CoreGraphics.framework */; };
+		05AF0D1815B5C01200A2932A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05AF0D1615B5C01200A2932A /* InfoPlist.strings */; };
+		05AF0D1A15B5C01200A2932A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AF0D1915B5C01200A2932A /* main.m */; };
+		05AF0D1E15B5C01200A2932A /* TCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AF0D1D15B5C01200A2932A /* TCAppDelegate.m */; };
+		05D9A3AD1627353300F74F06 /* TCDocumentViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */; };
+		05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */; };
+		05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3AC1627353300F74F06 /* TCImageViewerController.m */; };
+		05D9A3B8162736CB00F74F06 /* GenericDocumentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */; };
+		05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */; };
+		05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05AF0D0915B5C01200A2932A /* TCFileViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCFileViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05AF0D0D15B5C01200A2932A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		05AF0D0F15B5C01200A2932A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		05AF0D1115B5C01200A2932A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		05AF0D1515B5C01200A2932A /* TCFileViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TCFileViewer-Info.plist"; sourceTree = "<group>"; };
+		05AF0D1715B5C01200A2932A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05AF0D1915B5C01200A2932A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		05AF0D1B15B5C01200A2932A /* TCFileViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TCFileViewer-Prefix.pch"; sourceTree = "<group>"; };
+		05AF0D1C15B5C01200A2932A /* TCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCAppDelegate.h; sourceTree = "<group>"; };
+		05AF0D1D15B5C01200A2932A /* TCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCAppDelegate.m; sourceTree = "<group>"; };
+		05D9A3A61627353300F74F06 /* TCDocumentViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDocumentViewerController.h; sourceTree = "<group>"; };
+		05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDocumentViewerController.m; sourceTree = "<group>"; };
+		05D9A3A91627353300F74F06 /* TCDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDirectoryViewController.h; sourceTree = "<group>"; };
+		05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDirectoryViewController.m; sourceTree = "<group>"; };
+		05D9A3AB1627353300F74F06 /* TCImageViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCImageViewerController.h; sourceTree = "<group>"; };
+		05D9A3AC1627353300F74F06 /* TCImageViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCImageViewerController.m; sourceTree = "<group>"; };
+		05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericDocumentIcon.png; sourceTree = "<group>"; };
+		05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericFolderIcon.png; sourceTree = "<group>"; };
+		05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericImageIcon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05AF0D0615B5C01200A2932A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05AF0D0E15B5C01200A2932A /* UIKit.framework in Frameworks */,
+				05AF0D1015B5C01200A2932A /* Foundation.framework in Frameworks */,
+				05AF0D1215B5C01200A2932A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05AF0CFE15B5C01200A2932A = {
+			isa = PBXGroup;
+			children = (
+				05D9A3A51627353300F74F06 /* TCFileViewer */,
+				05AF0D1315B5C01200A2932A /* TestApp */,
+				05AF0D0C15B5C01200A2932A /* Frameworks */,
+				05AF0D0A15B5C01200A2932A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05AF0D0A15B5C01200A2932A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05AF0D0915B5C01200A2932A /* TCFileViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05AF0D0C15B5C01200A2932A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05AF0D0D15B5C01200A2932A /* UIKit.framework */,
+				05AF0D0F15B5C01200A2932A /* Foundation.framework */,
+				05AF0D1115B5C01200A2932A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05AF0D1315B5C01200A2932A /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				05AF0D1C15B5C01200A2932A /* TCAppDelegate.h */,
+				05AF0D1D15B5C01200A2932A /* TCAppDelegate.m */,
+				05AF0D1415B5C01200A2932A /* Supporting Files */,
+			);
+			path = TestApp;
+			sourceTree = "<group>";
+		};
+		05AF0D1415B5C01200A2932A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05AF0D1515B5C01200A2932A /* TCFileViewer-Info.plist */,
+				05AF0D1615B5C01200A2932A /* InfoPlist.strings */,
+				05AF0D1915B5C01200A2932A /* main.m */,
+				05AF0D1B15B5C01200A2932A /* TCFileViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05D9A3A51627353300F74F06 /* TCFileViewer */ = {
+			isa = PBXGroup;
+			children = (
+				05D9A3A61627353300F74F06 /* TCDocumentViewerController.h */,
+				05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */,
+				05D9A3A81627353300F74F06 /* Viewers */,
+			);
+			path = TCFileViewer;
+			sourceTree = "<group>";
+		};
+		05D9A3A81627353300F74F06 /* Viewers */ = {
+			isa = PBXGroup;
+			children = (
+				05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */,
+				05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */,
+				05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */,
+				05D9A3A91627353300F74F06 /* TCDirectoryViewController.h */,
+				05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */,
+				05D9A3AB1627353300F74F06 /* TCImageViewerController.h */,
+				05D9A3AC1627353300F74F06 /* TCImageViewerController.m */,
+			);
+			path = Viewers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05AF0D0815B5C01200A2932A /* TestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05AF0D2A15B5C01200A2932A /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildPhases = (
+				05AF0D0515B5C01200A2932A /* Sources */,
+				05AF0D0615B5C01200A2932A /* Frameworks */,
+				05AF0D0715B5C01200A2932A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestApp;
+			productName = "Springboard Organizer";
+			productReference = 05AF0D0915B5C01200A2932A /* TCFileViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05AF0D0015B5C01200A2932A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TC;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = ThirdCog;
+			};
+			buildConfigurationList = 05AF0D0315B5C01200A2932A /* Build configuration list for PBXProject "TCFileViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 05AF0CFE15B5C01200A2932A;
+			productRefGroup = 05AF0D0A15B5C01200A2932A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05AF0D0815B5C01200A2932A /* TestApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05AF0D0715B5C01200A2932A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05AF0D1815B5C01200A2932A /* InfoPlist.strings in Resources */,
+				05D9A3B8162736CB00F74F06 /* GenericDocumentIcon.png in Resources */,
+				05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */,
+				05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05AF0D0515B5C01200A2932A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05AF0D1A15B5C01200A2932A /* main.m in Sources */,
+				05AF0D1E15B5C01200A2932A /* TCAppDelegate.m in Sources */,
+				05D9A3AD1627353300F74F06 /* TCDocumentViewerController.m in Sources */,
+				05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */,
+				05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		05AF0D1615B5C01200A2932A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05AF0D1715B5C01200A2932A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05AF0D2815B5C01200A2932A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05AF0D2915B5C01200A2932A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05AF0D2B15B5C01200A2932A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TestApp/TCFileViewer-Prefix.pch";
+				INFOPLIST_FILE = "TestApp/TCFileViewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = TCFileViewer;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		05AF0D2C15B5C01200A2932A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TestApp/TCFileViewer-Prefix.pch";
+				INFOPLIST_FILE = "TestApp/TCFileViewer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = TCFileViewer;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05AF0D0315B5C01200A2932A /* Build configuration list for PBXProject "TCFileViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05AF0D2815B5C01200A2932A /* Debug */,
+				05AF0D2915B5C01200A2932A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05AF0D2A15B5C01200A2932A /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05AF0D2B15B5C01200A2932A /* Debug */,
+				05AF0D2C15B5C01200A2932A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05AF0D0015B5C01200A2932A /* Project object */;
+}
