@@ -20,6 +20,9 @@
 		05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */; };
 		05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */; };
 		05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3C116273A5D00F74F06 /* TCDVDirectoryWatcher.m */; };
+		05F64EAE166584DE0059333D /* TCVideoViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F64EAD166584DE0059333D /* TCVideoViewerController.m */; };
+		05F64EB1166585DF0059333D /* GenericMovieIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F64EB0166585DF0059333D /* GenericMovieIcon.png */; };
+		05F64EB3166585F50059333D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F64EB2166585F50059333D /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,10 @@
 		05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericImageIcon.png; sourceTree = "<group>"; };
 		05D9A3C016273A5D00F74F06 /* TCDVDirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDVDirectoryWatcher.h; sourceTree = "<group>"; };
 		05D9A3C116273A5D00F74F06 /* TCDVDirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDVDirectoryWatcher.m; sourceTree = "<group>"; };
+		05F64EAC166584DE0059333D /* TCVideoViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVideoViewerController.h; sourceTree = "<group>"; };
+		05F64EAD166584DE0059333D /* TCVideoViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVideoViewerController.m; sourceTree = "<group>"; };
+		05F64EB0166585DF0059333D /* GenericMovieIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericMovieIcon.png; sourceTree = "<group>"; };
+		05F64EB2166585F50059333D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F64EB3166585F50059333D /* MediaPlayer.framework in Frameworks */,
 				05AF0D0E15B5C01200A2932A /* UIKit.framework in Frameworks */,
 				05AF0D1015B5C01200A2932A /* Foundation.framework in Frameworks */,
 				05AF0D1215B5C01200A2932A /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +89,7 @@
 		05AF0D0C15B5C01200A2932A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05F64EB2166585F50059333D /* MediaPlayer.framework */,
 				05AF0D0D15B5C01200A2932A /* UIKit.framework */,
 				05AF0D0F15B5C01200A2932A /* Foundation.framework */,
 				05AF0D1115B5C01200A2932A /* CoreGraphics.framework */,
@@ -126,10 +135,13 @@
 				05D9A3B5162736CB00F74F06 /* GenericDocumentIcon.png */,
 				05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */,
 				05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */,
+				05F64EB0166585DF0059333D /* GenericMovieIcon.png */,
 				05D9A3A91627353300F74F06 /* TCDirectoryViewController.h */,
 				05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */,
 				05D9A3AB1627353300F74F06 /* TCImageViewerController.h */,
 				05D9A3AC1627353300F74F06 /* TCImageViewerController.m */,
+				05F64EAC166584DE0059333D /* TCVideoViewerController.h */,
+				05F64EAD166584DE0059333D /* TCVideoViewerController.m */,
 			);
 			path = Viewers;
 			sourceTree = "<group>";
@@ -199,6 +211,7 @@
 				05D9A3B8162736CB00F74F06 /* GenericDocumentIcon.png in Resources */,
 				05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */,
 				05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */,
+				05F64EB1166585DF0059333D /* GenericMovieIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +228,7 @@
 				05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */,
 				05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */,
 				05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */,
+				05F64EAE166584DE0059333D /* TCVideoViewerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
