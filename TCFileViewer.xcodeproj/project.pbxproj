@@ -23,6 +23,8 @@
 		05F64EAE166584DE0059333D /* TCVideoViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F64EAD166584DE0059333D /* TCVideoViewerController.m */; };
 		05F64EB1166585DF0059333D /* GenericMovieIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F64EB0166585DF0059333D /* GenericMovieIcon.png */; };
 		05F64EB3166585F50059333D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F64EB2166585F50059333D /* MediaPlayer.framework */; };
+		05F64F0C1666935F0059333D /* TCTextViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F64F0B1666935F0059333D /* TCTextViewerController.m */; };
+		05F64F0F166693F80059333D /* GenericTextIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F64F0E166693F80059333D /* GenericTextIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,9 @@
 		05F64EAD166584DE0059333D /* TCVideoViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVideoViewerController.m; sourceTree = "<group>"; };
 		05F64EB0166585DF0059333D /* GenericMovieIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericMovieIcon.png; sourceTree = "<group>"; };
 		05F64EB2166585F50059333D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		05F64F0A1666935F0059333D /* TCTextViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTextViewerController.h; sourceTree = "<group>"; };
+		05F64F0B1666935F0059333D /* TCTextViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTextViewerController.m; sourceTree = "<group>"; };
+		05F64F0E166693F80059333D /* GenericTextIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericTextIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,12 +141,15 @@
 				05D9A3B6162736CB00F74F06 /* GenericFolderIcon.png */,
 				05D9A3B7162736CB00F74F06 /* GenericImageIcon.png */,
 				05F64EB0166585DF0059333D /* GenericMovieIcon.png */,
+				05F64F0E166693F80059333D /* GenericTextIcon.png */,
 				05D9A3A91627353300F74F06 /* TCDirectoryViewController.h */,
 				05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */,
 				05D9A3AB1627353300F74F06 /* TCImageViewerController.h */,
 				05D9A3AC1627353300F74F06 /* TCImageViewerController.m */,
 				05F64EAC166584DE0059333D /* TCVideoViewerController.h */,
 				05F64EAD166584DE0059333D /* TCVideoViewerController.m */,
+				05F64F0A1666935F0059333D /* TCTextViewerController.h */,
+				05F64F0B1666935F0059333D /* TCTextViewerController.m */,
 			);
 			path = Viewers;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 				05D9A3B9162736CB00F74F06 /* GenericFolderIcon.png in Resources */,
 				05D9A3BA162736CB00F74F06 /* GenericImageIcon.png in Resources */,
 				05F64EB1166585DF0059333D /* GenericMovieIcon.png in Resources */,
+				05F64F0F166693F80059333D /* GenericTextIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +238,7 @@
 				05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */,
 				05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */,
 				05F64EAE166584DE0059333D /* TCVideoViewerController.m in Sources */,
+				05F64F0C1666935F0059333D /* TCTextViewerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
