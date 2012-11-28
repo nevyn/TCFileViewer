@@ -1,6 +1,6 @@
 #import "TCDirectoryViewController.h"
 
-@interface TCDirectoryViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TCDirectoryViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
 @end
 @interface TCDirectoryCollectionViewCell : UICollectionViewCell
 @property(strong) UILabel *textLabel;
@@ -21,6 +21,7 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     NSArray *_contents;
     TCDVDirectoryWatcher *_watcher;
     NSURL *_path;
+    NSURL *_pathToDelete;
 }
 + (NSArray*)viewControllersForPathComponentsInURL:(NSURL*)url
 {
@@ -190,6 +191,24 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Can't show document" message:err.localizedDescription delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _pathToDelete = [_contents objectAtIndex:indexPath.row];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Delete %@?", [_pathToDelete lastPathComponent]] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+    [sheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    if(buttonIndex != [actionSheet destructiveButtonIndex])
+        return;
+    
+    NSError *err;
+    if(![[NSFileManager defaultManager] removeItemAtURL:_pathToDelete error:&err])
+        [[[UIAlertView alloc] initWithTitle:@"Failed to delete" message:err.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    
 }
 
 #pragma mark
