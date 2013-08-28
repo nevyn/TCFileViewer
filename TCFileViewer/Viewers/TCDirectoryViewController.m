@@ -259,8 +259,6 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     self.textLabel.numberOfLines = 2;
     [self.contentView addSubview:self.textLabel];
     
-    NSLog(@":: %@", [self performSelector:@selector(recursiveDescription)]);
-    
     return self;
 }
 @end
