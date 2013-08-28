@@ -208,8 +208,21 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     NSError *err;
     if(![[NSFileManager defaultManager] removeItemAtURL:_pathToDelete error:&err])
         [[[UIAlertView alloc] initWithTitle:@"Failed to delete" message:err.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    
 }
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    return action == @selector(cut:);
+}
+- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    [self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
+}
+
 
 #pragma mark
 + (BOOL)canViewDocumentAtURL:(NSURL*)url
