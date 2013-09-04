@@ -111,6 +111,23 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     [(UITableView*)self.view reloadData];
 }
 
+- (unsigned long long int)folderSize:(NSURL *)parent
+{
+    NSDictionary *parentAttrs = [[NSFileManager defaultManager] attributesOfItemAtPath:parent.path error:NULL];
+    if(![parentAttrs.fileType isEqual:NSFileTypeDirectory])
+        return parentAttrs.fileSize;
+    
+    NSArray *filesArray = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:parent.path error:nil];
+    unsigned long long int fileSize = 0;
+    for(NSString *fileName in filesArray) {
+        NSURL *fullPath = [parent URLByAppendingPathComponent:fileName];
+        NSDictionary *fileDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath.path error:NULL];
+        fileSize += [fileDictionary fileSize];
+    }
+
+    return fileSize;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -122,14 +139,34 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     return _contents.count;
 }
 
+// http://stackoverflow.com/a/572623/48125
+static NSString *stringFromFileSize(unsigned long long theSize)
+{
+    double floatSize = theSize;
+    if (theSize<1023)
+        return([NSString stringWithFormat:@"%lli bytes",theSize]);
+    floatSize = floatSize / 1024;
+    if (floatSize<1023)
+        return([NSString stringWithFormat:@"%1.1f KB",floatSize]);
+    floatSize = floatSize / 1024;
+    if (floatSize<1023)
+        return([NSString stringWithFormat:@"%1.1f MB",floatSize]);
+    floatSize = floatSize / 1024;
+
+    return([NSString stringWithFormat:@"%1.1f GB",floatSize]);
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTCDirectoryCellIdentifier];
     if(!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTCDirectoryCellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kTCDirectoryCellIdentifier];
     
     NSURL *item = [_contents objectAtIndex:indexPath.row];
     cell.textLabel.text = [item lastPathComponent];
+    
+    cell.detailTextLabel.text = stringFromFileSize([self folderSize:item]);
     
     NSArray *viewers = [self viewersForURL:item];
     cell.imageView.image = viewers.count ? [viewers.lastObject thumbIcon] : [UIImage imageNamed:@"GenericDocumentIcon"];
