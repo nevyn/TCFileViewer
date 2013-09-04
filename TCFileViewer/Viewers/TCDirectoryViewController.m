@@ -166,7 +166,8 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     NSURL *item = [_contents objectAtIndex:indexPath.row];
     cell.textLabel.text = [item lastPathComponent];
     
-    cell.detailTextLabel.text = stringFromFileSize([self folderSize:item]);
+    NSDate *modified = [[NSFileManager defaultManager] attributesOfItemAtPath:item.path error:NULL].fileModificationDate;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", stringFromFileSize([self folderSize:item]), modified];
     
     NSArray *viewers = [self viewersForURL:item];
     cell.imageView.image = viewers.count ? [viewers.lastObject thumbIcon] : [UIImage imageNamed:@"GenericDocumentIcon"];
