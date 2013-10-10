@@ -220,8 +220,15 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 
     NSError *err = NULL;
     id viewer = [[[matchingViewers lastObject] alloc] initWithURL:item error:&err];
+    
+    if([viewer isKindOfClass:[self class]]) {
+        [viewer setDelegate:self.delegate];
+    }
+    
     if(viewer) {
-        [self.navigationController pushViewController:viewer animated:YES];
+        if(!_delegate || [_delegate directoryViewer:self shouldPresentContentViewController:viewer]) {
+            [self.navigationController pushViewController:viewer animated:YES];
+        }
     } else {
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
         if(matchingViewers.count == 0)
