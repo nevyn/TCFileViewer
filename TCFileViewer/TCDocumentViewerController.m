@@ -10,6 +10,7 @@
 }
 - (id)initWithURL:(NSURL*)path error:(__autoreleasing NSError**)err;
 {
+    self.restorationIdentifier = path.absoluteString;
     return [super init];
 }
 + (UIImage*)thumbIcon;
