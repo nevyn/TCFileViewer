@@ -299,7 +299,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:self.imageView];
     self.textLabel = [[UILabel alloc] initWithFrame:textFrame];
-    self.textLabel.textAlignment = UITextAlignmentCenter;
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [UIFont systemFontOfSize:14];
     self.textLabel.numberOfLines = 2;
     [self.contentView addSubview:self.textLabel];
