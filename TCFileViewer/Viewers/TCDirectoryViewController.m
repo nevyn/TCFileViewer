@@ -97,6 +97,7 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
 
 - (void)viewDidAppear:(BOOL)animated;
 {
+    [super viewDidAppear:animated];
     if([self.view isKindOfClass:[UITableView class]])
         [(UITableView*)self.view deselectRowAtIndexPath:[(UITableView*)self.view indexPathForSelectedRow] animated:animated];
     else
