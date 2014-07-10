@@ -13,6 +13,10 @@
 		05AF0D1815B5C01200A2932A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05AF0D1615B5C01200A2932A /* InfoPlist.strings */; };
 		05AF0D1A15B5C01200A2932A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AF0D1915B5C01200A2932A /* main.m */; };
 		05AF0D1E15B5C01200A2932A /* TCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AF0D1D15B5C01200A2932A /* TCAppDelegate.m */; };
+		05D2DC08196F0B8800D1574E /* TCDictionaryViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D2DC07196F0B8800D1574E /* TCDictionaryViewerController.m */; };
+		05D2DC0B196F0B9600D1574E /* TCArrayViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D2DC0A196F0B9600D1574E /* TCArrayViewerController.m */; };
+		05D2DC0E196F0C4100D1574E /* TCJSONViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D2DC0D196F0C4100D1574E /* TCJSONViewerController.m */; };
+		05D2DC11196F10CC00D1574E /* TCPlistViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D2DC10196F10CC00D1574E /* TCPlistViewerController.m */; };
 		05D9A3AD1627353300F74F06 /* TCDocumentViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */; };
 		05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3AA1627353300F74F06 /* TCDirectoryViewController.m */; };
 		05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9A3AC1627353300F74F06 /* TCImageViewerController.m */; };
@@ -38,6 +42,14 @@
 		05AF0D1B15B5C01200A2932A /* TCFileViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TCFileViewer-Prefix.pch"; sourceTree = "<group>"; };
 		05AF0D1C15B5C01200A2932A /* TCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCAppDelegate.h; sourceTree = "<group>"; };
 		05AF0D1D15B5C01200A2932A /* TCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCAppDelegate.m; sourceTree = "<group>"; };
+		05D2DC06196F0B8800D1574E /* TCDictionaryViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDictionaryViewerController.h; sourceTree = "<group>"; };
+		05D2DC07196F0B8800D1574E /* TCDictionaryViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDictionaryViewerController.m; sourceTree = "<group>"; };
+		05D2DC09196F0B9600D1574E /* TCArrayViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCArrayViewerController.h; sourceTree = "<group>"; };
+		05D2DC0A196F0B9600D1574E /* TCArrayViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCArrayViewerController.m; sourceTree = "<group>"; };
+		05D2DC0C196F0C4100D1574E /* TCJSONViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCJSONViewerController.h; sourceTree = "<group>"; };
+		05D2DC0D196F0C4100D1574E /* TCJSONViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCJSONViewerController.m; sourceTree = "<group>"; };
+		05D2DC0F196F10CC00D1574E /* TCPlistViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPlistViewerController.h; sourceTree = "<group>"; };
+		05D2DC10196F10CC00D1574E /* TCPlistViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPlistViewerController.m; sourceTree = "<group>"; };
 		05D9A3A61627353300F74F06 /* TCDocumentViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDocumentViewerController.h; sourceTree = "<group>"; };
 		05D9A3A71627353300F74F06 /* TCDocumentViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDocumentViewerController.m; sourceTree = "<group>"; };
 		05D9A3A91627353300F74F06 /* TCDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDirectoryViewController.h; sourceTree = "<group>"; };
@@ -150,6 +162,14 @@
 				05F64EAD166584DE0059333D /* TCVideoViewerController.m */,
 				05F64F0A1666935F0059333D /* TCTextViewerController.h */,
 				05F64F0B1666935F0059333D /* TCTextViewerController.m */,
+				05D2DC06196F0B8800D1574E /* TCDictionaryViewerController.h */,
+				05D2DC07196F0B8800D1574E /* TCDictionaryViewerController.m */,
+				05D2DC09196F0B9600D1574E /* TCArrayViewerController.h */,
+				05D2DC0A196F0B9600D1574E /* TCArrayViewerController.m */,
+				05D2DC0C196F0C4100D1574E /* TCJSONViewerController.h */,
+				05D2DC0D196F0C4100D1574E /* TCJSONViewerController.m */,
+				05D2DC0F196F10CC00D1574E /* TCPlistViewerController.h */,
+				05D2DC10196F10CC00D1574E /* TCPlistViewerController.m */,
 			);
 			path = Viewers;
 			sourceTree = "<group>";
@@ -231,11 +251,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D2DC0B196F0B9600D1574E /* TCArrayViewerController.m in Sources */,
+				05D2DC0E196F0C4100D1574E /* TCJSONViewerController.m in Sources */,
 				05AF0D1A15B5C01200A2932A /* main.m in Sources */,
 				05AF0D1E15B5C01200A2932A /* TCAppDelegate.m in Sources */,
 				05D9A3AD1627353300F74F06 /* TCDocumentViewerController.m in Sources */,
+				05D2DC11196F10CC00D1574E /* TCPlistViewerController.m in Sources */,
 				05D9A3AE1627353300F74F06 /* TCDirectoryViewController.m in Sources */,
 				05D9A3AF1627353300F74F06 /* TCImageViewerController.m in Sources */,
+				05D2DC08196F0B8800D1574E /* TCDictionaryViewerController.m in Sources */,
 				05D9A3C216273A5D00F74F06 /* TCDVDirectoryWatcher.m in Sources */,
 				05F64EAE166584DE0059333D /* TCVideoViewerController.m in Sources */,
 				05F64F0C1666935F0059333D /* TCTextViewerController.m in Sources */,

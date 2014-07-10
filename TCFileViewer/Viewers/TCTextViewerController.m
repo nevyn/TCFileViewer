@@ -44,7 +44,7 @@
 
 + (BOOL)canViewDocumentAtURL:(NSURL*)url
 {
-    return [@[@"txt", @"text", @"log", @"json", @"plist"] containsObject:url.pathExtension.lowercaseString];
+    return [@[@"txt", @"text", @"log", /*@"json", @"plist"*/] containsObject:url.pathExtension.lowercaseString];
 }
 
 + (UIImage*)thumbIcon;
