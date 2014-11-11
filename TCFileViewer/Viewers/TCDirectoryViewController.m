@@ -223,7 +223,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     id viewer = [[[matchingViewers lastObject] alloc] initWithURL:item error:&err];
     
     if([viewer isKindOfClass:[self class]]) {
-        [viewer setDelegate:self.delegate];
+        [(__typeof(self))viewer setDelegate:self.delegate];
     }
     
     if(viewer) {
