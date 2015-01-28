@@ -1,5 +1,11 @@
 #import "TCDirectoryViewController.h"
 
+// Optional support for zipping
+@interface SSZipArchive : NSObject
+// Zip
++ (BOOL)createZipFileAtPath:(NSString *)path withContentsOfDirectory:(NSString *)directoryPath;
+@end
+
 @interface TCDirectoryViewController () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
 @end
 @interface TCDirectoryCollectionViewCell : UICollectionViewCell
@@ -269,6 +275,43 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     [self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
 }
 
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return @[
+		[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+			[self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
+		}],
+		[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Extract" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+			[self shareFromIndexPath:indexPath];
+		}],
+	];
+}
+
+- (void)shareFromIndexPath:(NSIndexPath*)indexPath
+{
+    NSURL *item = [_contents objectAtIndex:indexPath.row];
+	NSFileManager *fm = [NSFileManager defaultManager];
+	BOOL isDirectory = NO;
+	if([fm fileExistsAtPath:item.path isDirectory:&isDirectory] && isDirectory) {
+		item = [self createTempZipFromDirectory:item];
+	}
+	
+	UIActivityViewController *share = [[UIActivityViewController alloc] initWithActivityItems:@[item] applicationActivities:nil];
+	[self presentViewController:share animated:YES completion:nil];
+}
+
+- (NSURL*)createTempZipFromDirectory:(NSURL*)item
+{
+	Class $ZipArchive = NSClassFromString(@"SSZipArchive") ?: NSClassFromString(@"GFSSZipArchive") ?: nil;
+	
+	NSURL *tempRoot = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+	NSURL *tempZip = [tempRoot URLByAppendingPathComponent:[item.lastPathComponent stringByAppendingPathExtension:@"zip"]];
+	
+	if(![$ZipArchive createZipFileAtPath:tempZip.path withContentsOfDirectory:item.path])
+		return item;
+	else
+		return tempZip;
+}
 
 #pragma mark
 + (BOOL)canViewDocumentAtURL:(NSURL*)url
