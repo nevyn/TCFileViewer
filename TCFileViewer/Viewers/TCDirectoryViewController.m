@@ -40,7 +40,7 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     NSArray *_contents;
     TCDVDirectoryWatcher *_watcher;
     NSURL *_path;
-    NSURL *_pathToDelete;
+    NSIndexPath *_indexPathForAction;
 }
 + (NSArray*)viewControllersForPathComponentsInURL:(NSURL*)url
 {
@@ -258,21 +258,36 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return @"More";
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _pathToDelete = [_contents objectAtIndex:indexPath.row];
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Delete %@?", [_pathToDelete lastPathComponent]] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+	[self askToDeleteOrShareFromIndexPath:indexPath];
+}
+
+- (void)askToDeleteOrShareFromIndexPath:(NSIndexPath*)indexPath
+{
+	NSURL *pathForAction = [_contents objectAtIndex:indexPath.row];
+    _indexPathForAction = indexPath;
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do what to %@?", [pathForAction lastPathComponent]] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: @"Extract", nil];
     [sheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
-    if(buttonIndex != [actionSheet destructiveButtonIndex])
-        return;
-    
-    NSError *err;
-    if(![[NSFileManager defaultManager] removeItemAtURL:_pathToDelete error:&err])
-        [[[UIAlertView alloc] initWithTitle:@"Failed to delete" message:err.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    if(buttonIndex == [actionSheet destructiveButtonIndex]) {
+		NSURL *pathForAction = [_contents objectAtIndex:_indexPathForAction.row];
+
+		NSError *err;
+		if(![[NSFileManager defaultManager] removeItemAtURL:pathForAction error:&err]) {
+			[[[UIAlertView alloc] initWithTitle:@"Failed to delete" message:err.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+		}
+	} else if(buttonIndex == [actionSheet firstOtherButtonIndex]) {
+		[self shareFromIndexPath:_indexPathForAction];
+	}
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -285,7 +300,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 }
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-    [self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
+    [self askToDeleteOrShareFromIndexPath:indexPath];
 }
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -293,7 +308,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 	Class $UITableViewRowAction = NSClassFromString(@"UITableViewRowAction");
 	return @[
 		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-			[self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
+			[self askToDeleteOrShareFromIndexPath:indexPath];
 		}],
 		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Extract" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
 			[self shareFromIndexPath:indexPath];
