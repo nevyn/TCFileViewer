@@ -13,6 +13,19 @@
 @property(strong) UIImageView *imageView;
 @end
 
+
+#ifndef __IPHONE_8_0
+typedef NS_ENUM(NSInteger, UITableViewRowActionStyle) {
+    UITableViewRowActionStyleDefault = 0,
+    UITableViewRowActionStyleDestructive = UITableViewRowActionStyleDefault,
+    UITableViewRowActionStyleNormal
+};
+@interface UITableViewRowAction : NSObject <NSCopying>
++ (instancetype)rowActionWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title handler:(void (^)(UITableViewRowAction *action, NSIndexPath *indexPath))handler;
+@end
+#endif
+
+
 // Forwarded like this because we only want to use it if it's compiled into the host app
 @interface TCDVDirectoryWatcher : NSObject
 @property(nonatomic,weak) id delegate;
@@ -277,11 +290,12 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	Class $UITableViewRowAction = NSClassFromString(@"UITableViewRowAction");
 	return @[
-		[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
 			[self tableView:nil commitEditingStyle:0 forRowAtIndexPath:indexPath];
 		}],
-		[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Extract" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Extract" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
 			[self shareFromIndexPath:indexPath];
 		}],
 	];
