@@ -131,20 +131,26 @@ static NSString *const kTCDirectoryCellIdentifier = @"DirectoryCell";
     [(UITableView*)self.view reloadData];
 }
 
-- (unsigned long long int)folderSize:(NSURL *)parent
+- (unsigned long long int)folderSize:(NSURL *)parent timedOut:(BOOL*)timedOut;
 {
     NSDictionary *parentAttrs = [[NSFileManager defaultManager] attributesOfItemAtPath:parent.path error:NULL];
     if(![parentAttrs.fileType isEqual:NSFileTypeDirectory])
         return parentAttrs.fileSize;
     
-    NSArray *filesArray = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:parent.path error:nil];
     unsigned long long int fileSize = 0;
-    for(NSString *fileName in filesArray) {
+	NSDate *started = [NSDate date];
+    for(NSString *fileName in [[NSFileManager defaultManager] enumeratorAtPath:parent.path]) {
         NSURL *fullPath = [parent URLByAppendingPathComponent:fileName];
         NSDictionary *fileDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath.path error:NULL];
         fileSize += [fileDictionary fileSize];
+		
+		// Stop working after 50ms as to not block UI too much
+		if([[NSDate date] timeIntervalSinceDate:started] > 0.05) {
+			if(timedOut) *timedOut = YES;
+			return fileSize;
+		}
     }
-
+	if(timedOut) *timedOut = NO;
     return fileSize;
 }
 
@@ -187,7 +193,9 @@ static NSString *stringFromFileSize(unsigned long long theSize)
     cell.textLabel.text = [item lastPathComponent];
     
     NSDate *modified = [[NSFileManager defaultManager] attributesOfItemAtPath:item.path error:NULL].fileModificationDate;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", stringFromFileSize([self folderSize:item]), modified];
+	BOOL timedOut = NO;
+	long long fileSize = [self folderSize:item timedOut:&timedOut];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@, %@", timedOut?@"at least ":@"", stringFromFileSize(fileSize), modified];
     
     NSArray *viewers = [self viewersForURL:item];
     cell.imageView.image = viewers.count ? [viewers.lastObject thumbIcon] : [UIImage imageNamed:@"GenericDocumentIcon"];
