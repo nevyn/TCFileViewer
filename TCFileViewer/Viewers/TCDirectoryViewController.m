@@ -339,7 +339,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 
 - (NSURL*)createTempZipFromDirectory:(NSURL*)item
 {
-	Class $ZipArchive = NSClassFromString(@"SSZipArchive") ?: NSClassFromString(@"GFSSZipArchive") ?: nil;
+	Class $ZipArchive = NSClassFromString(@"SSZipArchive") ?: NSClassFromString(@"GFSSZipArchive") ?: NSClassFromString(@"PDKTZipArchive") ?: nil;
 	
 	NSURL *tempRoot = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
 	NSURL *tempZip = [tempRoot URLByAppendingPathComponent:[item.lastPathComponent stringByAppendingPathExtension:@"zip"]];
