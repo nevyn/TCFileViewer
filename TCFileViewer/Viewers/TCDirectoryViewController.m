@@ -280,7 +280,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 {
 	NSURL *pathForAction = [_contents objectAtIndex:indexPath.row];
     _indexPathForAction = indexPath;
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do what to %@?", [pathForAction lastPathComponent]] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: @"Extract", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Do what to %@?", [pathForAction lastPathComponent]] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: @"Share", nil];
     [sheet showInView:self.view];
 }
 
@@ -318,7 +318,7 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
 			[self askToDeleteOrShareFromIndexPath:indexPath];
 		}],
-		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Extract" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+		[$UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Share" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
 			[self shareFromIndexPath:indexPath];
 		}],
 	];
