@@ -327,27 +327,41 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 - (void)shareFromIndexPath:(NSIndexPath*)indexPath
 {
     NSURL *item = [_contents objectAtIndex:indexPath.row];
-	NSFileManager *fm = [NSFileManager defaultManager];
-	BOOL isDirectory = NO;
-	if([fm fileExistsAtPath:item.path isDirectory:&isDirectory] && isDirectory) {
-		item = [self createTempZipFromDirectory:item];
-	}
-	
-	UIActivityViewController *share = [[UIActivityViewController alloc] initWithActivityItems:@[item] applicationActivities:nil];
-	[self presentViewController:share animated:YES completion:nil];
+	[self createTempZipFromDirectory:item then:^(NSURL *url) {
+		UIActivityViewController *share = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+		[self presentViewController:share animated:YES completion:nil];
+	}];
 }
 
-- (NSURL*)createTempZipFromDirectory:(NSURL*)item
+- (void)createTempZipFromDirectory:(NSURL*)item then:(void(^)(NSURL *url))callback;
 {
-	Class $ZipArchive = NSClassFromString(@"SSZipArchive") ?: NSClassFromString(@"GFSSZipArchive") ?: NSClassFromString(@"PDKTZipArchive") ?: nil;
-	
-	NSURL *tempRoot = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
-	NSURL *tempZip = [tempRoot URLByAppendingPathComponent:[item.lastPathComponent stringByAppendingPathExtension:@"zip"]];
-	
-	if(![$ZipArchive createZipFileAtPath:tempZip.path withContentsOfDirectory:item.path])
-		return item;
-	else
-		return tempZip;
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Creating ZIP file..." message:@"Please wait" preferredStyle:UIAlertControllerStyleAlert];
+	[self presentViewController:alert animated:YES completion:^{
+		dispatch_async(dispatch_get_global_queue(0, 0), ^{
+			BOOL isDirectory = NO;
+			NSFileManager *fm = [NSFileManager defaultManager];
+			if([fm fileExistsAtPath:item.path isDirectory:&isDirectory] && isDirectory) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[alert dismissViewControllerAnimated:YES completion:nil];
+					callback(item);
+				});
+				return;
+			}
+
+			Class $ZipArchive = NSClassFromString(@"SSZipArchive") ?: NSClassFromString(@"GFSSZipArchive") ?: NSClassFromString(@"PDKTZipArchive") ?: nil;
+		
+			NSURL *tempRoot = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+			NSURL *tempZip = [tempRoot URLByAppendingPathComponent:[item.lastPathComponent stringByAppendingPathExtension:@"zip"]];
+			
+			BOOL success = [$ZipArchive createZipFileAtPath:tempZip.path withContentsOfDirectory:item.path];
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[alert dismissViewControllerAnimated:YES completion:^{
+					callback(success ? tempZip : item);
+				}];
+			});
+		});
+	}];
 }
 
 #pragma mark
