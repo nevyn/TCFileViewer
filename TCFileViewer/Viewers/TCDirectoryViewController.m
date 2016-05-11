@@ -335,7 +335,8 @@ static NSString *stringFromFileSize(unsigned long long theSize)
 
 - (void)createTempZipFromDirectory:(NSURL*)item then:(void(^)(NSURL *url))callback;
 {
-	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Creating ZIP file..." message:@"Please wait" preferredStyle:UIAlertControllerStyleAlert];
+    Class $UIAlertController = NSClassFromString(@"UIAlertController");
+	UIAlertController *alert = [$UIAlertController alertControllerWithTitle:@"Creating ZIP file..." message:@"Please wait" preferredStyle:UIAlertControllerStyleAlert];
 	[self presentViewController:alert animated:YES completion:^{
 		dispatch_async(dispatch_get_global_queue(0, 0), ^{
 			BOOL isDirectory = NO;
